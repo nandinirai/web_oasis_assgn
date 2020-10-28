@@ -1,0 +1,33 @@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Enter A New Recipe</h2>
+
+<form action="/create" method="post" autocomplete="off">
+               <label for="Recipe">
+					<i>Recipe</i>
+				</label>
+
+				<input type="text" name="Recipe" placeholder="Recipe" id="Recipe" required>
+				<label for="Ingredients">
+					<i >Ingredients</i>
+				</label>
+
+				<input type="text" name="Ingredients" placeholder="Ingredients" id="Ingredients" required>
+                <label for="Veg or Non-Veg">
+					<i >Veg or NonVeg</i>
+				</label>
+				<input type="text" name="Veg_nonveg" placeholder="Veg or Non-Veg" id="Veg_nonveg" required>
+                <div class="msg">{{ msg }}</div>
+				<input type="submit" value="Submit">
+			</form>
+  
+{% endblock %}

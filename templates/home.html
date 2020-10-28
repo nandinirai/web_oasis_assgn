@@ -1,0 +1,40 @@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+<p>Here's a list of all the Recipes!
+<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                
+                <th class="id">ID</th>
+                <th class="recipe_name" >Recipe Name</th>
+                <th class="ingredients">Ingredients</th>
+                <th class="veg_nonveg">Vegetarian/Non-Vegetarian</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for row in rows %}
+            <tr>
+                <td style="text-align: center;" class="id">{{row["id"]}}</td>
+                <td style="text-align: center;" class="recipe_name" >{{row["recipe_name"]}}</td>
+                <td style="text-align: center;" class="ingredients">{{row["ingredients"]}}</td>
+                <td style="text-align: center;" class="veg_nonveg">{{row["veg_nonveg"]}}</td>
+                <td style="text-align: center;"><a href = "{{ url_for('sql_editlink',fid=row["id"],fname=row["recipe_name"], elname=row["ingredients"],eport=row["veg_nonveg"]) }}"><i class="fas fa-edit" style="color:black;"></a></td>
+                <td style="text-align: center;"><a href = "{{ url_for('sql_datadelete', fname=row["id"], lname=row["recipe_name"]) }}"><i class="fas fa-trash-alt" style="color:black;"></a></td>
+            </tr>
+             {% endfor %}
+        <tbody>
+        </table>
+        </p>
+{% endblock %}
